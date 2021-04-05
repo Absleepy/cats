@@ -4,7 +4,6 @@ import { API_URL } from "../../config/config";
 import styles from "./cat.module.css";
 import { useFetch } from "../../fetch/useFetch";
 import Loading from "../loading/Loading";
-import "react-dropdown/style.css";
 import { Link } from "react-router-dom";
 import Dropdown from "../custom/Dropdown";
 

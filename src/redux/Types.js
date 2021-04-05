@@ -1,4 +1,7 @@
 export const types = {
   INCREMENT: "INCREMENT",
   DECREMENT: "DECREMENT",
+  CATS: "CATS",
+  ERROR: "ERROR",
+  PENDING: "PENDING",
 };
