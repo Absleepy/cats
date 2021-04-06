@@ -2,25 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CatCard = ({ cats }) => {
+  console.log(cats);
   return (
     <div className="cat_card">
       {cats?.map((cat) => (
         <Link
-          to={`/images/${cat?.reference_image_id}`}
-          className="bg-primary d-flex flex-column"
+          to={`/images/${cat?.reference_image_id ?? cat.id}`}
+          className="bg-primary d-grid flex-column"
           key={cat?.id.toString()}
         >
-          <div className="card-image">
-            <img src={cat?.image?.url} width="100%" alt="tesst" />
+          <div className="card-image d-grid">
+            <img src={cat?.image?.url ?? cat?.url} width="100%" alt="tesst" />
           </div>
-          <div className="cat-name-container d-flex justify-between">
-            <p className="catName c-white">{cat?.name ?? "Beautiful cat"}</p>
-            <span className="c-white">{cat?.origin ?? "US"}</span>
-          </div>
+          {cat?.name && (
+            <div className="cat-name-container d-grid grid-2-col">
+              <p className="catName c-white">{cat?.name ?? ""}</p>
+              <span className="c-white">{cat?.origin ?? ""}</span>
+            </div>
+          )}
           <div className="cat-desc">
-            <p className="c-white two-line-text" title={cat?.description ?? ""}>
-              {cat?.description ?? ""}
-            </p>
+            {cat?.description && (
+              <p
+                className="c-white two-line-text"
+                title={cat?.description ?? ""}
+              >
+                {cat?.description ?? ""}
+              </p>
+            )}
           </div>
         </Link>
       ))}

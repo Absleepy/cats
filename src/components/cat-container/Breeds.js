@@ -7,19 +7,17 @@ import CatCard from "../card/CatCard";
 import Loading from "../loading/Loading";
 
 const Breeds = () => {
-  const gotU = useSelector((state) => state);
+  const cats = useSelector((state) => state);
 
   const dispatch = useDispatch();
   React.useEffect(() => {
-    if (!gotU.cats.length) dispatch(fetchCats());
+    if (!cats.cats.length) dispatch(fetchCats());
   }, []);
-  console.log(gotU);
-
-  const filtered = gotU?.cats?.filter((cat) => cat?.image?.height <= 936);
+  const filtered = cats?.cats?.filter((cat) => cat?.image?.height <= 936);
 
   return (
     <>
-      {gotU?.pending ? (
+      {cats?.pending ? (
         <Loading />
       ) : (
         <div>
