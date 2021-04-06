@@ -4,9 +4,10 @@ import { useFetch } from '../../fetch/useFetch';
 import CatCard from '../card/CatCard'; 
 import Loading from '../loading/Loading';
 const Breeds = () => { 
-    const [cats, loading] = useFetch(`${API_URL}/breeds`);
-    const filtered = cats?.filter(cat => (
-      cat?.image?.height <= 936
+  document.title = "Breeds";
+  const [cats, loading] = useFetch(`${API_URL}/breeds`);
+  const filtered = cats?.filter(cat => (
+    cat?.image?.height <= 936
     ));
     console.log(filtered)
     return (
