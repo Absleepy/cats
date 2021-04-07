@@ -1,0 +1,9 @@
+export const types = {
+  CATS: "CATS",
+  ERROR: "ERROR",
+  PENDING: "PENDING",
+  AUTH_SUCCESS: 'AUTH_SUCCESS', 
+  LOADING: 'LOADING', 
+  USER_ERROR: 'USER_ERROR',
+  CREATE_USER: 'CREATE_USER' 
+};
