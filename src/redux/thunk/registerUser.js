@@ -1,5 +1,5 @@
 import firebase from '../../firebase/firebase-config';
-import {createUserAction, loadingAction, userErrorAction} from '../actions/actions';
+import {UserSuccessAction, userErrorAction} from '../actions/actions';
 export const registerUser = (name, email, password) =>{
      return async dispatch  => { 
       try{
@@ -13,7 +13,7 @@ export const registerUser = (name, email, password) =>{
      })
 
      const user = await firebase.firestore().collection("users").doc(auth?.user?.uid).get();
-     dispatch(createUserAction(user.data()))
+     dispatch(UserSuccessAction(user.data()))
 
     }
       catch(err){   

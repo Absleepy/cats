@@ -7,8 +7,7 @@ const INITIAL_STATE = {
 };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
-  console.log(action)
-   switch (action.type) {
+    switch (action.type) {
     case types.loading : 
     return { 
       loading: action.payload.loading
@@ -18,15 +17,17 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       ...state,
       error: action.payload
     }
-    case types.CREATE_USER : 
+    case types.USER_SUCCESS : 
     return {
       ...state, 
-      user: action.payload
+      error: "",
+      user: action.payload,
+      loading:false,
     }
+    
     case types.LOG_OUT : 
     return firebase.auth().signOut();
-    case types.LOG_IN : 
-    return firebase.auth().signInWithEmailAndPassword(action.payload.email, action.payload.password);
+    
     
     default: return state
   }

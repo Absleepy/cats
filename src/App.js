@@ -7,9 +7,12 @@ import Header from "./components/header/Header";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import React from "react";
-import { useDispatch} from "react-redux";
-import { createUserAction } from "./redux/actions/actions";
+import { useDispatch, useSelector} from "react-redux";
+import { UserSuccessAction } from "./redux/actions/actions";
 function App() {
+
+  const state = useSelector(state => state);
+  console.log(state)
   
   const dispatch = useDispatch(); 
   React.useEffect(() => {  
@@ -19,9 +22,8 @@ function App() {
       if (auth) {
         const user = await firebase.firestore().collection("users").doc(auth?.uid).get(); 
         if(user?.exists)
-        dispatch(createUserAction(user.data()))
+        dispatch(UserSuccessAction(user.data()))
        } else {
-
       }
     })
   },[])

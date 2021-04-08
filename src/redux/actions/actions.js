@@ -36,9 +36,9 @@ export const userErrorAction = (error) => {
     payload: error
   };
 };
-export const createUserAction = (user) => { 
+export const UserSuccessAction = (user) => { 
    return {
-    type: types.CREATE_USER,
+    type: types.USER_SUCCESS,
     payload: user
   };
 };

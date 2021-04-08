@@ -4,7 +4,7 @@ import { logIn } from '../../redux/thunk/logIn';
 import Button from '../custom/Button';
 const Login = () => {
     const dispatch = useDispatch(); 
-    const state = useSelector(state => state);   
+    const {error} = useSelector(state => state.userReducer);  
     const [value, setValue] = useState({
         email: "",
         password: ""
@@ -27,6 +27,7 @@ const Login = () => {
 
     return (
         <> 
+        {error && <span>{error}</span>}
        <form onSubmit={(e) => handleSubmit(e)}>
         <input className="input" placeholder="Email" onChange={(e) => handleChange(e)} value={email} type="text" name="email" id="email"/>
         <input className="input" placeholder="Password" onChange={(e) => handleChange(e)} value={password} type="password" name="password" id="password"/>
