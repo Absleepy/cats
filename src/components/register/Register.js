@@ -24,6 +24,10 @@ const Register = () => {
     }
     const handleSubmit = (e) =>{
         e.preventDefault();
+        setValue({
+            email: '',
+            password: ''
+        })
         dispatch(registerUser(name, email, password))
         } 
     return (
@@ -31,9 +35,9 @@ const Register = () => {
       <div>
         {useError && <span>{useError}</span>}
        <form onSubmit={(e) => handleSubmit(e)}>
-        <input className="input" onChange={(e) => handleChange(e)} value={name} type="text" name="name" id="name"/>
-        <input className="input" onChange={(e) => handleChange(e)} value={email} type="text" name="email" id="email"/>
-        <input className="input" onChange={(e) => handleChange(e)} value={password} type="password" name="password" id="password"/>
+        <input className="input" placeholder="Name" onChange={(e) => handleChange(e)} value={name} type="text" name="name" id="name"/>
+        <input className="input" placeholder="Email" onChange={(e) => handleChange(e)} value={email} type="text" name="email" id="email"/>
+        <input className="input" placeholder="Password" onChange={(e) => handleChange(e)} value={password} type="password" name="password" id="password"/>
         <Button type="submit" >
             Submit
         </Button>

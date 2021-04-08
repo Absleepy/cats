@@ -24,9 +24,10 @@ export const authSuccessAction = (user) =>{
     user
   }
 }
-export const loadingAction = () => {
+export const loadingAction = (loading) => {
   return {
     type: types.LOADING,
+    payload: loading
   };
 };
 export const userErrorAction = (error) => { 
@@ -36,10 +37,24 @@ export const userErrorAction = (error) => {
   };
 };
 export const createUserAction = (user) => { 
-  console.log(user)
-  return {
+   return {
     type: types.CREATE_USER,
     payload: user
+  };
+};
+export const logOutUserAction = () => { 
+   return {
+    type: types.LOG_OUT, 
+ 
+  };
+};
+export const logInUserAction = (email,password) => { 
+   return {
+    type: types.LOG_IN,  
+    payload: {
+      email,
+      password
+    }
   };
 };
 

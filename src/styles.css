@@ -158,7 +158,12 @@ p {
   visibility: hidden;
   transition: 0.4s ease;
 }
-
+.header_user-info{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 12px;
+}
 .header-login:hover .login-popup {
   opacity: 1;
   visibility: visible;

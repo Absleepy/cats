@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CatCard = ({ cats }) => {
-  console.log(cats);
-  return (
+   return (
     <div className="cat_card">
       {cats?.map((cat) => (
         <Link

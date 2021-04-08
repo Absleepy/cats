@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import Button from "../custom/Button";
 import axios from "axios";
  import { API_URL, API_KEY } from "../../config/config";
-import { useSelector } from "react-redux";
-const Header = () => {
-
+import { useDispatch, useSelector } from "react-redux";
+import {logOut} from '../../redux/thunk/logOut';
+import { withRouter } from 'react-router-dom';
+const Header = (props) => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.userReducer.user);
-  
-  const [userImage, setUserImage] = useState("./user.png"); 
+    const [userImage, setUserImage] = useState("./user.png"); 
   const fetchImg = async (img) => {
     let bodyFormData = new FormData();
     bodyFormData.append('file', img);
@@ -35,11 +36,16 @@ const Header = () => {
     }
 
     fetchImg(e.target.files[0]);
-  };
+  }; 
+ 
+  
+  const handleClick = async (e) =>{
+    user ? dispatch(logOut()) : props.history.push('/login');
+  }
+ 
 
   return (
-    <header className="header">
-      <h4>Welcome {user?.email}</h4>
+    <header className="header"> 
       <div className="d-grid header-grid">
         <strong className="d-block logoContainer">
           <Link to="/">
@@ -68,7 +74,8 @@ const Header = () => {
             </ul>
             <div className="header-login">
               <div className="user-image d-block">
-                <img src={userImage} width="100%" />
+                <div className="header_user-info"><img src={userImage} width="100%" />
+                {user?.name && <span className="c-white">{user?.name}</span>}</div>
                 <input
                   title="Profile Image"
                   onChange={changeUserImage}
@@ -77,12 +84,10 @@ const Header = () => {
                   id="userImageInput"
                 />
               </div>
-              <div className="login-popup">
-                {user?.name &&<h4>Welcome {user?.name}</h4>}
+              <div className="login-popup"> 
                 <div className="grid-2-col d-grid align-center justify-center">
-                  <Button>
-                    
-                    <Link to="/login"><span>Login</span></Link>
+                  <Button onClick={handleClick}> 
+                    <span>{user?.name ? "Log Out" : "Log In"}</span>
                   </Button>
                   <Button>
                     <Link to="/register"><span>Register</span></Link>
@@ -97,4 +102,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

@@ -1,18 +1,18 @@
 import firebase from '../../firebase/firebase-config';
 import {createUserAction, loadingAction, userErrorAction} from '../actions/actions';
 export const registerUser = (name, email, password) =>{
-  loadingAction(true)
-    return async dispatch  => { 
+     return async dispatch  => { 
       try{
       
-        const auth = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    const auth = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    
       //create user in firestore with doc set to user.uid
-    await firebase.firestore().collection("users").doc(auth?.user?.uid).set({
-      name,
+     await firebase.firestore().collection("users").doc(auth?.user?.uid).set({
+        name,
         email,
      })
 
-     const user = await firebase.firestore().collection("users").doc(auth?.user?.uid).get()
+     const user = await firebase.firestore().collection("users").doc(auth?.user?.uid).get();
      dispatch(createUserAction(user.data()))
 
     }

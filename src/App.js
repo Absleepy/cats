@@ -7,17 +7,19 @@ import Header from "./components/header/Header";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { createUserAction } from "./redux/actions/actions";
 function App() {
   
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
+  React.useEffect(() => {  
+ 
 
-  React.useEffect(() => {
-    console.log(firebase)
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        dispatch(createUserAction(user))
+    firebase.auth().onAuthStateChanged(async (auth) => { 
+      if (auth) {
+        const user = await firebase.firestore().collection("users").doc(auth?.uid).get(); 
+        if(user?.exists)
+        dispatch(createUserAction(user.data()))
        } else {
 
       }

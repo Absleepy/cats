@@ -5,8 +5,7 @@ import CatCard from "../components/card/CatCard";
 import Loading from "../components/loading/Loading";
 const Index = () => {
   const [cats, loading] = useFetch(`${API_URL}/images/search?limit=34`);
-  console.log(cats);
-  return loading ? <Loading /> : <CatCard cats={cats} />;
+   return loading ? <Loading /> : <CatCard cats={cats} />;
 };
 
 export default Index;

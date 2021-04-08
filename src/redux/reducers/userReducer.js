@@ -1,13 +1,18 @@
 import { types } from "../Types";
-
+import firebase from '../../firebase/firebase-config';
 const INITIAL_STATE = {
   user: {},
   error: "",
-  pending: false,
+  loading: false, 
 };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
-     switch (action.type) {
+  console.log(action)
+   switch (action.type) {
+    case types.loading : 
+    return { 
+      loading: action.payload.loading
+    }
     case types.USER_ERROR :  
     return { 
       ...state,
@@ -18,6 +23,11 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       ...state, 
       user: action.payload
     }
+    case types.LOG_OUT : 
+    return firebase.auth().signOut();
+    case types.LOG_IN : 
+    return firebase.auth().signInWithEmailAndPassword(action.payload.email, action.payload.password);
+    
     default: return state
   }
 };
