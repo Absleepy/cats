@@ -39,8 +39,8 @@ const Header = (props) => {
   }; 
  
   
-  const handleClick = async (e) =>{
-    user ? dispatch(logOut()) : props.history.push('/login');
+  const handleClick = async (e) =>{ 
+    user.email ? dispatch(logOut()) : props.history.push('/login');
   }
  
 
@@ -74,7 +74,7 @@ const Header = (props) => {
             </ul>
             <div className="header-login">
               <div className="user-image d-block">
-                <div className="header_user-info"><img src={userImage} width="100%" />
+                <div className="header_user-info"><img src={userImage} alt="Profile image" width="100%" />
                 {user?.name && <span className="c-white">{user?.name}</span>}</div>
                 <input
                   title="Profile Image"

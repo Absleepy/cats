@@ -8,7 +8,7 @@ import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import React from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { UserSuccessAction } from "./redux/actions/actions";
+import { UserSuccessAction, logOutUserAction } from "./redux/actions/actions";
 function App() {
 
   const state = useSelector(state => state);
@@ -24,6 +24,7 @@ function App() {
         if(user?.exists)
         dispatch(UserSuccessAction(user.data()))
        } else {
+         dispatch(logOutUserAction())
       }
     })
   },[])

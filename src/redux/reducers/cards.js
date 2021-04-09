@@ -7,6 +7,7 @@ const INITIAL_STATE = {
 };
 
 export const cardsReducer = (state = INITIAL_STATE, action) => {
+  console.log(action)
   switch (action.type) {
     case types.PENDING:
       return { ...state, pending: true };

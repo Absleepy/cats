@@ -1,5 +1,4 @@
-import { types } from "../Types";
-import firebase from '../../firebase/firebase-config';
+import { types } from "../Types"; 
 const INITIAL_STATE = {
   user: {},
   error: "",
@@ -26,7 +25,11 @@ export const userReducer = (state = INITIAL_STATE, action) => {
     }
     
     case types.LOG_OUT : 
-    return firebase.auth().signOut();
+    return  {
+      user: {},
+  error: "",
+  loading: false, 
+    }
     
     
     default: return state

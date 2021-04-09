@@ -5,13 +5,12 @@ import CatCard from "../card/CatCard";
 import Loading from "../loading/Loading";
 
 const Breeds = () => {
-  const cats = useSelector((state) => state);
-
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    if (!cats.cats.length) dispatch(fetchCats());
+  const cats = useSelector((state) => state.cardsReducer.cats);
+   const dispatch = useDispatch(); 
+  React.useEffect(() => {  
+      dispatch(fetchCats());
   }, []);
-  const filtered = cats?.cats?.filter((cat) => cat?.image?.height <= 936);
+  const filtered =   cats?.filter((cat) => cat?.image?.height <= 936);
 
   return (
     <>

@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
 import { logIn } from '../../redux/thunk/logIn';
 import Button from '../custom/Button';
-const Login = () => {
+const Login = (props) => {
     const dispatch = useDispatch(); 
-    const {error} = useSelector(state => state.userReducer);  
+    const {error, user} = useSelector(state => state.userReducer);    
     const [value, setValue] = useState({
         email: "",
         password: ""
@@ -22,7 +23,11 @@ const Login = () => {
             email: '',
             password: ''
         }) 
-        dispatch(logIn(email, password)) 
+        dispatch(logIn(email, password));
+        if(user.email){
+            props.history.push('/')
+        }
+       
         } 
 
     return (
@@ -39,4 +44,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default withRouter(Login)

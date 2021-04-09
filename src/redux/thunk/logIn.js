@@ -1,4 +1,4 @@
-import {logInUserAction, userErrorAction, loadingAction} from '../actions/actions';
+import { userErrorAction, loadingAction} from '../actions/actions';
 import firebase from '../../firebase/firebase-config';
 export const logIn = (email, password) =>{ 
     return async dispatch  => { 
@@ -6,8 +6,7 @@ export const logIn = (email, password) =>{
       try{
        await firebase.auth().signInWithEmailAndPassword(email, password); 
        }
-      catch(err){   
-        console.log("tests", err)
+      catch(err){    
         loadingAction(false);
           dispatch(userErrorAction(err.message))
       }
