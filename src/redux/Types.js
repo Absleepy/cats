@@ -4,6 +4,8 @@ export const types = {
   USER_ERROR: "USER_ERROR",
   ERROR: "ERROR",
   LOG_IN: "LOG_IN",
-  LOG_OUT: "LOG_OUT", 
+  LOG_OUT: "LOG_OUT",
   CATS: "CATS",
+  ADD_TO_WISH: "ADD_TO_WISH",
+  REMOVE_FROM_WISH: "REMOVE_FROM_WISH",
 };

@@ -44,7 +44,7 @@ export const logOutUserAction = () => {
   };
 };
 export const logInUserAction = (email,password) => { 
-   return {
+  return {
     type: types.LOG_IN,  
     payload: {
       email,
@@ -52,4 +52,14 @@ export const logInUserAction = (email,password) => {
     }
   };
 };
+
+// CART
+
+export const addToWishAction = (cat) => { 
+   return {
+    type: types.ADD_TO_WISH,  
+    payload: cat
+  };
+};
+
 

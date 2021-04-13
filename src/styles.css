@@ -60,6 +60,21 @@ p {
 .d-block {
   display: block;
 }
+.positionRelative{
+  position: relative;
+}
+.wishIcon{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 2;
+}
+.wishIcon span{
+  display: block;
+}
 
 /* grid properties */
 .cat_card {
@@ -205,12 +220,10 @@ p {
   margin: 30px 0;
 }
 
-.cat_card a {
-  display: grid;
+.cat_card a { 
   align-items: self-end;
   padding: 5px;
-  border-radius: 6px;
-  margin: 20px 0;
+  border-radius: 6px; 
 }
 .card-image {
   max-height: 300px;
