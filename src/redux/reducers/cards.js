@@ -3,20 +3,19 @@ import { types } from "../Types";
 const INITIAL_STATE = {
   cats: [],
   error: "",
-  pending: false,
+  loading: false,
 };
 
 export const cardsReducer = (state = INITIAL_STATE, action) => {
-  console.log(action)
   switch (action.type) {
-    case types.PENDING:
-      return { ...state, pending: true };
+    case types.LOADING:
+      return { ...state, loading: true };
     case types.CATS:
-      return { ...state, pending: false, cats: action.payload };
+      return { ...state, loading: false, cats: action.payload };
     case types.ERROR:
       return {
         ...state,
-        pending: false,
+        loading: false,
         error: action.error,
       };
     default:

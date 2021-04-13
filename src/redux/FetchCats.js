@@ -1,13 +1,13 @@
 import { API_URL, API_KEY } from "../config/config";
-import { 
+import {
   fetchCatsAction,
   fetchErrorAction,
-  fetchPendingAction
+  loadingAction,
 } from "./actions/actions";
 
 export const fetchCats = () => {
   return (dispatch) => { 
-    dispatch(fetchPendingAction())
+    dispatch(loadingAction());
     try {
       fetch(`${API_URL}/breeds`, {
         headers: {
@@ -16,6 +16,7 @@ export const fetchCats = () => {
       })
         .then((res) => res.json())
         .then((data) => dispatch(fetchCatsAction(data)));
+        dispatch(loadingAction());
     } catch (err) {
       dispatch(fetchErrorAction(err));
     }

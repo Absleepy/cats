@@ -23,13 +23,14 @@ const Register = () => {
         })
     }
     const handleSubmit = (e) =>{
-        e.preventDefault();
-        setValue({
-            email: '',
-            password: ''
-        })
-        dispatch(registerUser(name, email, password))
-        } 
+      e.preventDefault();
+      setValue({
+        name: "",
+        email: "",
+        password: "",
+      });
+      dispatch(registerUser(name, email, password));
+    } 
     return (
       
       <div>

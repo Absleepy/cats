@@ -1,20 +1,21 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCats } from "../../redux/FetchCats";
 import CatCard from "../card/CatCard";
 import Loading from "../loading/Loading";
 
 const Breeds = () => {
-  const cats = useSelector((state) => state.cardsReducer.cats);
-   const dispatch = useDispatch(); 
-  React.useEffect(() => {  
-      dispatch(fetchCats());
+  const { cats, loading } = useSelector((state) => state.cardsReducer);
+
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    !cats.length && dispatch(fetchCats());
   }, []);
-  const filtered =   cats?.filter((cat) => cat?.image?.height <= 936);
+  const filtered = cats?.filter((cat) => cat?.image?.height <= 936);
 
   return (
     <>
-      {cats?.pending ? (
+      {loading ? (
         <Loading />
       ) : (
         <div>

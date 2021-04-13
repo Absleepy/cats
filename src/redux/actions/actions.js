@@ -1,9 +1,9 @@
 import { types } from "../Types";
 
 
-export const fetchPendingAction = () => {
+export const loadingAction = () => {
   return {
-    type: types.PENDING,
+    type: types.LOADING,
   };
 };
 export const fetchCatsAction = (cats) => {
@@ -24,12 +24,7 @@ export const authSuccessAction = (user) =>{
     user
   }
 }
-export const loadingAction = (loading) => {
-  return {
-    type: types.LOADING,
-    payload: loading
-  };
-};
+ 
 export const userErrorAction = (error) => { 
   return {
     type: types.USER_ERROR,
@@ -38,9 +33,9 @@ export const userErrorAction = (error) => {
 };
 export const UserSuccessAction = (user) => { 
    return {
-    type: types.USER_SUCCESS,
-    payload: user
-  };
+     type: types.LOG_IN,
+     payload: user,
+   };
 };
 export const logOutUserAction = () => { 
    return {

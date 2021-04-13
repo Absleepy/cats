@@ -51,6 +51,7 @@ const Header = (props) => {
           <Link to="/">
             <img id="logo" src="./logo.png" width="100%" alt="Cats" />
           </Link>
+          
         </strong>
         <nav className="nav w-100">
           <div className="d-grid h-100 nav-grid">
